@@ -1,17 +1,13 @@
-# Odysseus — Local AI Research Assistant
+# Odysseus — Privacy-First Local AI Research Assistant
 
 > **A full-stack, privacy-first AI assistant with deep research, email, calendar, RAG, voice I/O, YouTube, and shell capabilities — running entirely on local hardware with multiple LLM backends.**
 
 ---
 
-## Overview
-
 **Odysseus** is a production-grade, self-hosted AI assistant built in Python (Flask + WebSockets). Unlike cloud-based AI tools, every model inference, document embedding, and tool call executes locally — no data leaves your machine.
 
-### Core Capabilities
-
 | Capability | Implementation |
-|-----------|---------------|
+|------------|----------------|
 | 🔍 **Deep Research** | Multi-step web search + synthesis via SearXNG |
 | 📧 **Email** | Read, compose, send via IMAP/SMTP |
 | 📅 **Calendar** | CalDAV sync — read/write events |
@@ -23,8 +19,6 @@
 | 👤 **Face recognition** | Local face-ID for access control |
 
 ---
-
-## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────┐
@@ -57,7 +51,7 @@
 
 ---
 
-## Key Source Files
+## Project Structure
 
 ### Core Application (`src/`)
 
@@ -115,9 +109,10 @@ async def deep_research(query: str, max_rounds: int = 3):
 
 ```bash
 # Clone and install
-git clone https://github.com/yourusername/odysseus
-cd odysseus
-python -m venv venv && source venv/bin/activate
+git clone https://github.com/skmainuddin745-spec/Odysseus-AI-Assistant
+cd Odysseus-AI-Assistant
+python -m venv venv && source venv/bin/activate  # Linux/Mac
+# OR: python -m venv venv && venv\Scripts\activate  # Windows
 pip install -r requirements.txt
 
 # Configure
@@ -133,13 +128,31 @@ python app.py
 
 ## Technology Stack
 
-- **Backend:** Python 3.11, Flask, Flask-SocketIO, aiohttp
-- **AI/LLM:** Ollama (local), OpenAI API, Anthropic Claude API
-- **RAG:** ChromaDB, FastEmbed (sentence transformers)
-- **Voice:** OpenAI Whisper (STT), Piper TTS
-- **Email/Calendar:** imaplib, smtplib, caldav
-- **Database:** SQLite
-- **Frontend:** Vanilla JS, WebSockets, CodeMirror editor
+| Layer | Technology |
+|-------|-----------|
+| **Backend** | Python 3.11, Flask, Flask-SocketIO, aiohttp |
+| **AI/LLM** | Ollama (local), OpenAI API, Anthropic Claude API |
+| **RAG** | ChromaDB, FastEmbed (sentence transformers) |
+| **Voice** | OpenAI Whisper (STT), Piper TTS |
+| **Email/Calendar** | imaplib, smtplib, caldav |
+| **Database** | SQLite |
+| **Frontend** | Vanilla JS, WebSockets, CodeMirror editor |
+
+---
+
+## Privacy & Security
+
+- **Zero cloud inference:** all LLM calls route to local Ollama or user-supplied API keys — no data processed by third-party cloud without explicit configuration
+- **Local embeddings:** FastEmbed runs entirely on CPU/GPU locally; documents never leave the machine
+- **JWT authentication:** browser-based sessions use signed JWT tokens
+- **Sandboxed shell:** command execution runs in a restricted subprocess environment with configurable command whitelist
+
+---
+
+## 📚 References & Documentation
+
+- [GitHub Repository](https://github.com/skmainuddin745-spec/Odysseus-AI-Assistant)
+- [Project Description](https://github.com/skmainuddin745-spec/Odysseus-AI-Assistant#readme)
 
 ---
 
