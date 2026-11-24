@@ -5,6 +5,14 @@ Odysseus is on a voyage, but not home yet. It works great for me (lol), but this
 If you see weird CSS, strange layout behavior, or a suspiciously murky corner of
 the codebase, you are probably right to stay away.
 
+## In Progress / Recently Landed
+
+- **MCP tool adapter** (`src/mcp_tool_adapter.py`): bidirectional bridge between
+  Odysseus FUNCTION_TOOL_SCHEMAS and MCP wire format, so any MCP-compatible
+  client (Claude Desktop, Antigravity, Continue.dev …) can call Odysseus tools
+  without running a full Odysseus instance.  Covered by pytest smoke tests in
+  `tests/test_mcp_tool_adapter.py`.
+
 ## High Priority
 
 - SQUASH BUGS
